@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.hibernate</groupId>
     <artifactId>hibernate-validator-parent</artifactId>
     <packaging>pom</packaging>
-    <version>4.2.0-SNAPSHOT</version>
+    <version>4.3.0-SNAPSHOT</version>
     <name>Hibernate Validator Aggregator</name>
     <url>http://validator.hibernate.org</url>
 
@@ -72,7 +70,7 @@
         <!-- see http://maven.apache.org/general.html -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <jdocbook.ignoreTranslations>false</jdocbook.ignoreTranslations>
-        <jsr303.tck.version>1.0.5.Beta1</jsr303.tck.version>
+        <jsr303.tck.version>1.0.5.GA</jsr303.tck.version>
     </properties>
 
     <dependencyManagement>
@@ -130,7 +128,7 @@
             <dependency>
                 <groupId>org.hibernate.javax.persistence</groupId>
                 <artifactId>hibernate-jpa-2.0-api</artifactId>
-                <version>1.0.0.Final</version>
+                <version>1.0.1.Final</version>
             </dependency>
             <dependency>
                 <groupId>org.hibernate</groupId>
@@ -156,16 +154,6 @@
                 <groupId>org.hibernate.jsr303.tck</groupId>
                 <artifactId>jsr303-tck</artifactId>
                 <version>${jsr303.tck.version}</version>
-                <exclusions>
-                    <exclusion>
-                        <groupId>org.jboss.test-harness</groupId>
-                        <artifactId>jboss-test-harness</artifactId>
-                    </exclusion>
-                    <exclusion>
-                        <groupId>org.jboss.test-harness</groupId>
-                        <artifactId>jboss-test-harness-api</artifactId>
-                    </exclusion>
-                </exclusions>
             </dependency>
             <dependency>
                 <groupId>org.jsoup</groupId>
@@ -388,6 +376,13 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-javadoc-plugin</artifactId>
                     <version>2.7</version>
+                    <configuration>
+                        <docfilessubdirs>true</docfilessubdirs>
+                        <javadocDirectory>${project.basedir}/../src/main/javadoc</javadocDirectory>
+                        <stylesheetfile>stylesheet.css</stylesheetfile>
+                        <bottom>
+                            <![CDATA[Copyright &copy; ${project.inceptionYear}-{currentYear} <a href="http://redhat.com">Red Hat Middleware, LLC.</a>  All Rights Reserved]]></bottom>
+                    </configuration>
                 </plugin>
                 <plugin>
                     <groupId>org.jboss.maven.plugins</groupId>

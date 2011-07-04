@@ -147,11 +147,15 @@ public class Car {
 
       <para>When using property level constraints property access strategy is
       used to access the value to be validated. This means the bean validation
-      provider accesses the state via the property accessor method.</para>
+      provider accesses the state via the property accessor method. One
+      advantage of annotating properties instead of fields is that the
+      constraints become part of the constrained type's API that way and users
+      are aware of the existing constraints without having to examine the
+      type's implementation.</para>
 
       <tip>
         <para>It is recommended to stick either to field
-        <emphasis>or</emphasis> property annotation within one class. It is
+        <emphasis>or</emphasis> property annotations within one class. It is
         not recommended to annotate a field <emphasis>and</emphasis> the
         accompanying getter method as this would cause the field to be
         validated twice.</para>
@@ -938,7 +942,7 @@ public void testOrderedChecks() {
         defined groups in the annotation express the sequence of groups that
         substitute <classname>Default</classname> for this class. <xref
         linkend="example-rental-car" /> introduces a new class
-        <classname>RentalCar</classname> with a redfined default group. With
+        <classname>RentalCar</classname> with a redefined default group. With
         this definition the check for all three groups can be rewritten as
         seen in <xref
         linkend="example-testOrderedChecksWithRedefinedDefault" />.</para>
@@ -1436,7 +1440,7 @@ public class RentalCar extends Car {
             </row>
 
             <row>
-              <entry>@SafeHtml(value=, additionalTags=)</entry>
+              <entry>@SafeHtml(whitelistType=, additionalTags=)</entry>
 
               <entry><classname>CharSequence</classname></entry>
 
@@ -1444,9 +1448,9 @@ public class RentalCar extends Car {
               malicious fragments such as <code>&lt;script/&gt;</code>. In
               order to use this constraint, the <ulink
               url="http://jsoup.org/">jsoup</ulink> library must be part of
-              the class path. With the <parameter>value</parameter> attribute
-              predefined whitelist types can be chosen. You can also specify
-              additional html tags for the whitelist with the
+              the class path. With the <parameter>whitelistType</parameter>
+              attribute predefined whitelist types can be chosen. You can also
+              specify additional html tags for the whitelist with the
               <parameter>additionalTags</parameter> attribute.</entry>
 
               <entry>none</entry>

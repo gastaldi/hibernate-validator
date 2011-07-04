@@ -4,7 +4,7 @@
     <parent>
         <artifactId>hibernate-validator-parent</artifactId>
         <groupId>org.hibernate</groupId>
-        <version>4.2.0-SNAPSHOT</version>
+        <version>4.3.0-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
     <groupId>org.hibernate</groupId>
@@ -18,6 +18,32 @@
                 <configuration>
                     <compilerArgument>-proc:none</compilerArgument>
                 </configuration>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-source-plugin</artifactId>
+            </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-javadoc-plugin</artifactId>
+                <configuration>
+                    <links>
+                        <link>http://java.sun.com/j2se/1.6.0/docs/api/</link>
+                        <link>http://docs.jboss.org/hibernate/stable/beanvalidation/api/</link>
+                    </links>
+                    <packagesheader>Hibernate Validator Annotation Processor Packages</packagesheader>
+                    <doctitle>Hibernate Validator Annotation Processor ${project.version}</doctitle>
+                    <windowtitle>Hibernate Validator Annotation Processor ${project.version}</windowtitle>
+                </configuration>
+                <executions>
+                    <execution>
+                        <id>attach-javadocs</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>jar</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
         </plugins>
     </build>
